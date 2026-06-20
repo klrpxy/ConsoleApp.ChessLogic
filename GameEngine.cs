@@ -1,6 +1,9 @@
+using VitalRouter;
+
 namespace ConsoleAppChessLogic;
 
-public sealed class GameEngine {
+[Routes]
+public sealed partial class GameEngine {
     private readonly MoveValidator moveValidator;
 
     public GameEngine(GameState? initialState = null) {
@@ -9,6 +12,11 @@ public sealed class GameEngine {
     }
 
     public GameState State { get; }
+
+    [Route]
+    private void Handle(MoveChessIntent intent) {
+        intent.Complete(Execute(intent.Command));
+    }
 
     public GameResult Execute(MovePieceCommand cmd) {
         if (State.Status != GameStatus.Playing) {

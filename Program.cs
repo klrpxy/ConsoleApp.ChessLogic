@@ -1,6 +1,9 @@
 using ConsoleAppChessLogic;
+using VitalRouter;
 
 var engine = new GameEngine();
+var router = Router.Default;
+using var subscription = engine.MapTo(router);
 
 while (true)
 {
@@ -23,9 +26,14 @@ while (true)
         continue;
     }
 
-    var result = engine.Execute(new MovePieceCommand(
+    var intent = new MoveChessIntent(new MovePieceCommand(
         new BoardPosition(fromX, fromY),
         new BoardPosition(toX, toY)));
+
+    await router.PublishAsync(intent);
+
+    var result = intent.Result ??
+                 throw new InvalidOperationException("玩家意图没有被 GameEngine 处理。");
 
     if (result.Result is MoveResult.InvalidInput or MoveResult.GameAlreadyEnded)
     {
