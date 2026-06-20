@@ -9,23 +9,18 @@ public sealed class EventConsoleView : IGameView {
     private readonly TextWriter output;
     private readonly ConsoleMoveInputParser inputParser;
 
-    public EventConsoleView(
-        TextReader input,
-        TextWriter output,
-        ConsoleMoveInputParser inputParser) {
+    public EventConsoleView(TextReader input, TextWriter output, ConsoleMoveInputParser inputParser) {
         this.input = input;
         this.output = output;
         this.inputParser = inputParser;
     }
 
-    public async ValueTask<ViewInputResult> ReadInputAsync(
-        CancellationToken cancellationToken = default) {
+    public async ValueTask<ViewInputResult> ReadInputAsync(CancellationToken cancellationToken = default) {
         var line = await input.ReadLineAsync(cancellationToken);
         return inputParser.Parse(line);
     }
 
-    public void ShowInitial(GameSnapshot snapshot) {
-    }
+    public void ShowInitial(GameSnapshot snapshot) { /* noop */ }
 
     public void ShowInvalidInput() {
         output.WriteLine("输入非法");

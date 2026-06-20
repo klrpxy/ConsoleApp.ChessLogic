@@ -11,8 +11,7 @@ public sealed class GameApplication {
         this.view = view;
     }
 
-    public async ValueTask RunAsync(
-        CancellationToken cancellationToken = default) {
+    public async ValueTask RunAsync(CancellationToken cancellationToken = default) {
         view.ShowInitial(engine.GetSnapshot());
 
         while (!cancellationToken.IsCancellationRequested) {
