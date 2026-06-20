@@ -1,0 +1,15 @@
+global using ConsoleAppChessLogic.Application;
+global using ConsoleAppChessLogic.Application.Commands;
+global using ConsoleAppChessLogic.Application.Events;
+global using ConsoleAppChessLogic.Application.Results;
+global using ConsoleAppChessLogic.Application.Snapshots;
+global using ConsoleAppChessLogic.Domain.Board;
+global using ConsoleAppChessLogic.Domain.Game;
+global using ConsoleAppChessLogic.Domain.Pieces;
+global using ConsoleAppChessLogic.Domain.Pieces.Strategies;
+global using ConsoleAppChessLogic.Domain.Rules;
+global using ConsoleAppChessLogic.Presentation;
+global using ConsoleAppChessLogic.Presentation.Console.Board;
+global using ConsoleAppChessLogic.Presentation.Console.Common;
+global using ConsoleAppChessLogic.Presentation.Console.Events;
+global using ConsoleAppChessLogic.Tests.TestSupport;
