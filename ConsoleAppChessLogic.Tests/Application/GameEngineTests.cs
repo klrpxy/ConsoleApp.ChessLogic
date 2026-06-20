@@ -19,22 +19,6 @@ public sealed class GameEngineTests {
     }
 
     [Fact]
-    public async Task Route_HandlesPublishedMoveIntent() {
-        var engine = new GameEngine();
-        var router = new VitalRouter.Router();
-        using var subscription = engine.MapTo(router);
-        var intent = new MoveChessIntent(
-            new BoardPosition(1, 9),
-            new BoardPosition(2, 7));
-
-        await router.PublishAsync(intent);
-
-        Assert.NotNull(intent.Result);
-        Assert.Equal(MoveResult.Success, intent.Result.Result);
-        Assert.Equal(PieceColor.Black, engine.State.CurrentTurn);
-    }
-
-    [Fact]
     public void LegalMove_ChangesTurnAndReturnsMoveEvent() {
         var engine = new GameEngine();
 

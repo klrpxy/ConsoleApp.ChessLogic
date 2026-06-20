@@ -1,10 +1,8 @@
 using ConsoleAppChessLogic.Application;
 using ConsoleAppChessLogic.Presentation;
 using ConsoleAppChessLogic.Presentation.Console.Board;
-using VitalRouter;
 
 var engine = new GameEngine();
-var router = Router.Default;
 
 // Adjust all board colors here.
 var boardTheme = BoardConsoleTheme.Default with {
@@ -18,7 +16,5 @@ IGameView view = new BoardConsoleView(
     new BoardConsoleInputParser(),
     boardTheme);
 
-using var subscription = engine.MapTo(router);
-
-var application = new GameApplication(router, engine, view);
+var application = new GameApplication(engine, view);
 await application.RunAsync();

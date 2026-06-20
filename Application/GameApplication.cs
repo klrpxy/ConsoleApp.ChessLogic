@@ -1,15 +1,12 @@
-using VitalRouter;
 using ConsoleAppChessLogic.Presentation;
 
 namespace ConsoleAppChessLogic.Application;
 
 public sealed class GameApplication {
-    private readonly Router router;
     private readonly GameEngine engine;
     private readonly IGameView view;
 
-    public GameApplication(Router router, GameEngine engine, IGameView view) {
-        this.router = router;
+    public GameApplication(GameEngine engine, IGameView view) {
         this.engine = engine;
         this.view = view;
     }
@@ -30,11 +27,7 @@ public sealed class GameApplication {
                 continue;
             }
 
-            await router.PublishAsync(input.Intent, cancellationToken);
-
-            var result = input.Intent.Result ??
-                         throw new InvalidOperationException(
-                             "玩家意图没有被 GameEngine 处理。");
+            var result = engine.Execute(input.Intent);
 
             view.ShowResult(result, engine.GetSnapshot());
         }

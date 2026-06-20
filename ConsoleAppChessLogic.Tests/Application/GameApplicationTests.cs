@@ -4,14 +4,12 @@ public sealed class GameApplicationTests {
     [Fact]
     public async Task RunAsync_UsesViewForInputAndOutput() {
         var engine = new GameEngine();
-        var router = new VitalRouter.Router();
-        using var subscription = engine.MapTo(router);
         var view = new RecordingGameView(
             ViewInputResult.Move(new MoveChessIntent(
                 new BoardPosition(1, 9),
                 new BoardPosition(2, 7))),
             ViewInputResult.Quit());
-        var application = new GameApplication(router, engine, view);
+        var application = new GameApplication(engine, view);
 
         await application.RunAsync();
 
@@ -24,12 +22,10 @@ public sealed class GameApplicationTests {
     [Fact]
     public async Task RunAsync_AsksViewToShowMalformedInput() {
         var engine = new GameEngine();
-        var router = new VitalRouter.Router();
-        using var subscription = engine.MapTo(router);
         var view = new RecordingGameView(
             ViewInputResult.Invalid(),
             ViewInputResult.Quit());
-        var application = new GameApplication(router, engine, view);
+        var application = new GameApplication(engine, view);
 
         await application.RunAsync();
 

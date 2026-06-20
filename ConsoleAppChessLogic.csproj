@@ -11,8 +11,4 @@
       <Compile Remove="ConsoleAppChessLogic.Tests\**\*.cs" />
     </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="VitalRouter" Version="2.6.1" />
-    </ItemGroup>
-
 </Project>

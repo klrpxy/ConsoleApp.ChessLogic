@@ -1,4 +1,3 @@
-using VitalRouter;
 using ConsoleAppChessLogic.Application.Commands;
 using ConsoleAppChessLogic.Application.Events;
 using ConsoleAppChessLogic.Application.Results;
@@ -11,8 +10,7 @@ using ConsoleAppChessLogic.Domain.Rules;
 
 namespace ConsoleAppChessLogic.Application;
 
-[Routes]
-public sealed partial class GameEngine {
+public sealed class GameEngine {
     private readonly MoveValidator moveValidator;
 
     public GameEngine(GameState? initialState = null) {
@@ -35,11 +33,6 @@ public sealed partial class GameEngine {
             State.CurrentTurn,
             State.Status,
             pieces);
-    }
-
-    [Route]
-    private void Handle(MoveChessIntent intent) {
-        intent.Complete(Execute(intent));
     }
 
     public GameResult Execute(MoveChessIntent intent) {
