@@ -39,33 +39,33 @@ public sealed partial class GameEngine {
 
     [Route]
     private void Handle(MoveChessIntent intent) {
-        intent.Complete(Execute(intent.Command));
+        intent.Complete(Execute(intent));
     }
 
-    public GameResult Execute(MovePieceCommand cmd) {
+    public GameResult Execute(MoveChessIntent intent) {
         if (State.Status != GameStatus.Playing) {
             return GameResult.WithoutEvents(MoveResult.GameAlreadyEnded);
         }
 
         if (!moveValidator.IsLegalMove(
                 State.Board,
-                cmd.From,
-                cmd.To,
+                intent.From,
+                intent.To,
                 State.CurrentTurn)) {
             return GameResult.WithoutEvents(MoveResult.InvalidInput);
         }
 
-        var movingPiece = State.Board[cmd.From]!.Value;
-        var capturedPiece = State.Board[cmd.To];
+        var movingPiece = State.Board[intent.From]!.Value;
+        var capturedPiece = State.Board[intent.To];
         var events = new List<IGameEvent> {
             new PieceMovedEvent(
                 movingPiece.Color,
                 movingPiece.Type,
-                cmd.From,
-                cmd.To)
+                intent.From,
+                intent.To)
         };
 
-        State.Board.Move(cmd.From, cmd.To);
+        State.Board.Move(intent.From, intent.To);
 
         var movingColor = State.CurrentTurn;
         var opponent = MoveValidator.OpponentOf(movingColor);

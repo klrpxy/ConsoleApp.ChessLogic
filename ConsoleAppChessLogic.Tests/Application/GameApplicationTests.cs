@@ -7,9 +7,9 @@ public sealed class GameApplicationTests {
         var router = new VitalRouter.Router();
         using var subscription = engine.MapTo(router);
         var view = new RecordingGameView(
-            ViewInputResult.Move(new MoveChessIntent(new MovePieceCommand(
+            ViewInputResult.Move(new MoveChessIntent(
                 new BoardPosition(1, 9),
-                new BoardPosition(2, 7)))),
+                new BoardPosition(2, 7))),
             ViewInputResult.Quit());
         var application = new GameApplication(router, engine, view);
 

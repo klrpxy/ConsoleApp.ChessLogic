@@ -11,10 +11,10 @@ public sealed class BoardConsoleInputParserTests {
         Assert.NotNull(result.Intent);
         Assert.Equal(
             new BoardPosition(1, 9),
-            result.Intent.Command.From);
+            result.Intent.From);
         Assert.Equal(
             new BoardPosition(2, 7),
-            result.Intent.Command.To);
+            result.Intent.To);
     }
 
     [Theory]

@@ -26,8 +26,8 @@ public sealed class BoardConsoleInputParser {
             return ViewInputResult.Invalid();
         }
 
-        return ViewInputResult.Move(new MoveChessIntent(new MovePieceCommand(
+        return ViewInputResult.Move(new MoveChessIntent(
             new BoardPosition(fromColumn - 1, fromRow),
-            new BoardPosition(toColumn - 1, toRow))));
+            new BoardPosition(toColumn - 1, toRow)));
     }
 }

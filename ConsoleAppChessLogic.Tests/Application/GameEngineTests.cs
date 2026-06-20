@@ -23,9 +23,9 @@ public sealed class GameEngineTests {
         var engine = new GameEngine();
         var router = new VitalRouter.Router();
         using var subscription = engine.MapTo(router);
-        var intent = new MoveChessIntent(new MovePieceCommand(
+        var intent = new MoveChessIntent(
             new BoardPosition(1, 9),
-            new BoardPosition(2, 7)));
+            new BoardPosition(2, 7));
 
         await router.PublishAsync(intent);
 
@@ -38,7 +38,7 @@ public sealed class GameEngineTests {
     public void LegalMove_ChangesTurnAndReturnsMoveEvent() {
         var engine = new GameEngine();
 
-        var result = engine.Execute(new MovePieceCommand(
+        var result = engine.Execute(new MoveChessIntent(
             new BoardPosition(1, 9),
             new BoardPosition(2, 7)));
 
@@ -56,7 +56,7 @@ public sealed class GameEngineTests {
     public void IllegalMove_DoesNotChangeBoardOrTurn() {
         var engine = new GameEngine();
 
-        var result = engine.Execute(new MovePieceCommand(
+        var result = engine.Execute(new MoveChessIntent(
             new BoardPosition(1, 9),
             new BoardPosition(3, 7)));
 
@@ -73,7 +73,7 @@ public sealed class GameEngineTests {
     public void Capture_ReturnsMoveThenCaptureEvent() {
         var engine = new GameEngine();
 
-        var result = engine.Execute(new MovePieceCommand(
+        var result = engine.Execute(new MoveChessIntent(
             new BoardPosition(1, 7),
             new BoardPosition(1, 0)));
 
@@ -96,7 +96,7 @@ public sealed class GameEngineTests {
             (new BoardPosition(0, 1), TestBoard.Red(PieceType.Chariot)));
         var engine = new GameEngine(new GameState(board));
 
-        var result = engine.Execute(new MovePieceCommand(
+        var result = engine.Execute(new MoveChessIntent(
             new BoardPosition(0, 1),
             new BoardPosition(4, 1)));
 
@@ -118,7 +118,7 @@ public sealed class GameEngineTests {
             (new BoardPosition(4, 1), TestBoard.Red(PieceType.Chariot)));
         var engine = new GameEngine(new GameState(board));
 
-        var result = engine.Execute(new MovePieceCommand(
+        var result = engine.Execute(new MoveChessIntent(
             new BoardPosition(4, 1),
             new BoardPosition(4, 0)));
 
@@ -146,7 +146,7 @@ public sealed class GameEngineTests {
             GameStatus.BlackWon);
         var engine = new GameEngine(state);
 
-        var result = engine.Execute(new MovePieceCommand(
+        var result = engine.Execute(new MoveChessIntent(
             new BoardPosition(1, 9),
             new BoardPosition(2, 7)));
 
