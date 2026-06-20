@@ -1,7 +1,7 @@
-using ConsoleAppChessLogic.Application.Commands;
-using ConsoleAppChessLogic.Domain.Board;
+using ConsoleApp.ChessLogic.Application.Commands;
+using ConsoleApp.ChessLogic.Domain.Board;
 
-namespace ConsoleAppChessLogic.Presentation.Console.BoardView;
+namespace ConsoleApp.ChessLogic.Presentation.Console.BoardView;
 
 public sealed class BoardConsoleInputParser {
     public ViewInputResult Parse(string? input) {

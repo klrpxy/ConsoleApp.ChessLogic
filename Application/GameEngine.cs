@@ -1,14 +1,14 @@
-using ConsoleAppChessLogic.Application.Commands;
-using ConsoleAppChessLogic.Application.Events;
-using ConsoleAppChessLogic.Application.Results;
-using ConsoleAppChessLogic.Application.Snapshots;
-using ConsoleAppChessLogic.Domain.Board;
-using ConsoleAppChessLogic.Domain.Game;
-using ConsoleAppChessLogic.Domain.Pieces;
-using ConsoleAppChessLogic.Domain.Pieces.Strategies;
-using ConsoleAppChessLogic.Domain.Rules;
+using ConsoleApp.ChessLogic.Application.Commands;
+using ConsoleApp.ChessLogic.Application.Events;
+using ConsoleApp.ChessLogic.Application.Results;
+using ConsoleApp.ChessLogic.Application.Snapshots;
+using ConsoleApp.ChessLogic.Domain.Board;
+using ConsoleApp.ChessLogic.Domain.Game;
+using ConsoleApp.ChessLogic.Domain.Pieces;
+using ConsoleApp.ChessLogic.Domain.Pieces.Strategies;
+using ConsoleApp.ChessLogic.Domain.Rules;
 
-namespace ConsoleAppChessLogic.Application;
+namespace ConsoleApp.ChessLogic.Application;
 
 public sealed class GameEngine {
     private readonly MoveValidator moveValidator;

@@ -1,6 +1,6 @@
-using ConsoleAppChessLogic.Presentation;
+using ConsoleApp.ChessLogic.Presentation;
 
-namespace ConsoleAppChessLogic.Application;
+namespace ConsoleApp.ChessLogic.Application;
 
 public sealed class GameApplication {
     private readonly GameEngine engine;

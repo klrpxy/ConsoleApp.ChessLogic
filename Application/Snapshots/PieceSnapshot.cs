@@ -1,7 +1,7 @@
-using ConsoleAppChessLogic.Domain.Board;
-using ConsoleAppChessLogic.Domain.Pieces;
+using ConsoleApp.ChessLogic.Domain.Board;
+using ConsoleApp.ChessLogic.Domain.Pieces;
 
-namespace ConsoleAppChessLogic.Application.Snapshots;
+namespace ConsoleApp.ChessLogic.Application.Snapshots;
 
 public sealed record PieceSnapshot(
     PieceColor Color,

@@ -1,7 +1,7 @@
-using ConsoleAppChessLogic.Domain.Game;
-using ConsoleAppChessLogic.Domain.Pieces;
+using ConsoleApp.ChessLogic.Domain.Game;
+using ConsoleApp.ChessLogic.Domain.Pieces;
 
-namespace ConsoleAppChessLogic.Application.Snapshots;
+namespace ConsoleApp.ChessLogic.Application.Snapshots;
 
 public sealed record GameSnapshot(
     PieceColor CurrentTurn,

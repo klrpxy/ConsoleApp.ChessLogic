@@ -1,8 +1,8 @@
-using ConsoleAppChessLogic.Domain.Board;
-using ConsoleAppChessLogic.Domain.Pieces;
-using ConsoleAppChessLogic.Domain.Pieces.Strategies;
+using ConsoleApp.ChessLogic.Domain.Board;
+using ConsoleApp.ChessLogic.Domain.Pieces;
+using ConsoleApp.ChessLogic.Domain.Pieces.Strategies;
 
-namespace ConsoleAppChessLogic.Domain.Rules;
+namespace ConsoleApp.ChessLogic.Domain.Rules;
 
 public sealed class MoveValidator {
     private readonly PieceMoveStrategyRegistry strategyRegistry;

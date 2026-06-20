@@ -1,7 +1,7 @@
-using ConsoleAppChessLogic.Application.Results;
-using ConsoleAppChessLogic.Application.Snapshots;
+using ConsoleApp.ChessLogic.Application.Results;
+using ConsoleApp.ChessLogic.Application.Snapshots;
 
-namespace ConsoleAppChessLogic.Presentation;
+namespace ConsoleApp.ChessLogic.Presentation;
 
 public interface IGameView {
     ValueTask<ViewInputResult> ReadInputAsync(CancellationToken cancellationToken = default);

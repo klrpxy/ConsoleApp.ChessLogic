@@ -1,6 +1,6 @@
-using ConsoleAppChessLogic.Domain.Board;
+using ConsoleApp.ChessLogic.Domain.Board;
 
-namespace ConsoleAppChessLogic.Domain.Pieces.Strategies;
+namespace ConsoleApp.ChessLogic.Domain.Pieces.Strategies;
 
 public interface IPieceMoveStrategy {
     bool IsValidMove(

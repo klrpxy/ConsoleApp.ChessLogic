@@ -1,3 +1,3 @@
-namespace ConsoleAppChessLogic.Application.Events;
+namespace ConsoleApp.ChessLogic.Application.Events;
 
 public interface IGameEvent;

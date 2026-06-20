@@ -1,8 +1,8 @@
-using ConsoleAppChessLogic.Application.Results;
-using ConsoleAppChessLogic.Application.Snapshots;
-using ConsoleAppChessLogic.Presentation.Console.Common;
+using ConsoleApp.ChessLogic.Application.Results;
+using ConsoleApp.ChessLogic.Application.Snapshots;
+using ConsoleApp.ChessLogic.Presentation.Console.Common;
 
-namespace ConsoleAppChessLogic.Presentation.Console.BoardView;
+namespace ConsoleApp.ChessLogic.Presentation.Console.BoardView;
 
 public sealed class BoardConsoleView : IGameView {
     private readonly TextReader input;

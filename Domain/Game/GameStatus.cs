@@ -1,4 +1,4 @@
-namespace ConsoleAppChessLogic.Domain.Game;
+namespace ConsoleApp.ChessLogic.Domain.Game;
 
 public enum GameStatus {
     Playing,

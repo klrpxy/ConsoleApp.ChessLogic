@@ -1,6 +1,6 @@
-using ConsoleAppChessLogic.Domain.Board;
+using ConsoleApp.ChessLogic.Domain.Board;
 
-namespace ConsoleAppChessLogic.Domain.Pieces.Strategies;
+namespace ConsoleApp.ChessLogic.Domain.Pieces.Strategies;
 
 public sealed class CannonMoveStrategy : IPieceMoveStrategy {
     public bool IsValidMove(ChessBoard board, BoardPosition from, BoardPosition to, ChessPiece piece) {

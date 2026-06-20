@@ -1,4 +1,4 @@
-namespace ConsoleAppChessLogic.Presentation.Console.BoardView;
+namespace ConsoleApp.ChessLogic.Presentation.Console.BoardView;
 
 public readonly record struct AnsiColor(byte Red, byte Green, byte Blue);
 

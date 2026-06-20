@@ -1,4 +1,4 @@
-namespace ConsoleAppChessLogic.Domain.Pieces;
+namespace ConsoleApp.ChessLogic.Domain.Pieces;
 
 public enum PieceType {
     General,

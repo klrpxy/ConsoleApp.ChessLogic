@@ -1,6 +1,6 @@
-using ConsoleAppChessLogic.Domain.Pieces;
+using ConsoleApp.ChessLogic.Domain.Pieces;
 
-namespace ConsoleAppChessLogic.Domain.Board;
+namespace ConsoleApp.ChessLogic.Domain.Board;
 
 public sealed class ChessBoard {
     private readonly ChessPiece?[,] pieces = new ChessPiece?[9, 10];

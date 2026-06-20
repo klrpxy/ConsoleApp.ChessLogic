@@ -1,6 +1,6 @@
-using ConsoleAppChessLogic.Application.Commands;
+using ConsoleApp.ChessLogic.Application.Commands;
 
-namespace ConsoleAppChessLogic.Presentation;
+namespace ConsoleApp.ChessLogic.Presentation;
 
 public sealed record ViewInputResult(
     ViewInputKind Kind,

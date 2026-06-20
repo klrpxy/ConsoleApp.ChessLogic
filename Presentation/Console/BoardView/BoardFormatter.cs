@@ -1,10 +1,10 @@
 using System.Text;
-using ConsoleAppChessLogic.Application.Snapshots;
-using ConsoleAppChessLogic.Domain.Board;
-using ConsoleAppChessLogic.Domain.Game;
-using ConsoleAppChessLogic.Domain.Pieces;
+using ConsoleApp.ChessLogic.Application.Snapshots;
+using ConsoleApp.ChessLogic.Domain.Board;
+using ConsoleApp.ChessLogic.Domain.Game;
+using ConsoleApp.ChessLogic.Domain.Pieces;
 
-namespace ConsoleAppChessLogic.Presentation.Console.BoardView;
+namespace ConsoleApp.ChessLogic.Presentation.Console.BoardView;
 
 public static class BoardFormatter {
     public static string Format(

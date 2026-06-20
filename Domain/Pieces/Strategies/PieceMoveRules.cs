@@ -1,6 +1,6 @@
-using ConsoleAppChessLogic.Domain.Board;
+using ConsoleApp.ChessLogic.Domain.Board;
 
-namespace ConsoleAppChessLogic.Domain.Pieces.Strategies;
+namespace ConsoleApp.ChessLogic.Domain.Pieces.Strategies;
 
 internal static class PieceMoveRules {
     public static bool IsStraightMove(BoardPosition from, BoardPosition to) =>

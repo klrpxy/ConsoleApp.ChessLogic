@@ -1,7 +1,7 @@
-using ConsoleAppChessLogic.Application.Events;
-using ConsoleAppChessLogic.Domain.Pieces;
+using ConsoleApp.ChessLogic.Application.Events;
+using ConsoleApp.ChessLogic.Domain.Pieces;
 
-namespace ConsoleAppChessLogic.Presentation.Console.Common;
+namespace ConsoleApp.ChessLogic.Presentation.Console.Common;
 
 public static class GameEventFormatter {
     public static string Format(

@@ -1,4 +1,4 @@
-namespace ConsoleAppChessLogic.Domain.Pieces.Strategies;
+namespace ConsoleApp.ChessLogic.Domain.Pieces.Strategies;
 
 public sealed class PieceMoveStrategyRegistry {
     private readonly IReadOnlyDictionary<PieceType, IPieceMoveStrategy> strategies =

@@ -1,7 +1,7 @@
-using ConsoleAppChessLogic.Domain.Board;
-using ConsoleAppChessLogic.Domain.Pieces;
+using ConsoleApp.ChessLogic.Domain.Board;
+using ConsoleApp.ChessLogic.Domain.Pieces;
 
-namespace ConsoleAppChessLogic.Domain.Game;
+namespace ConsoleApp.ChessLogic.Domain.Game;
 
 public sealed class GameState {
     public GameState(

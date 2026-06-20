@@ -1,6 +1,6 @@
-using ConsoleAppChessLogic.Application.Events;
+using ConsoleApp.ChessLogic.Application.Events;
 
-namespace ConsoleAppChessLogic.Application.Results;
+namespace ConsoleApp.ChessLogic.Application.Results;
 
 public sealed record GameResult(
     bool Success,

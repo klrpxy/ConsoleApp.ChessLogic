@@ -1,4 +1,4 @@
-namespace ConsoleAppChessLogic.Presentation;
+namespace ConsoleApp.ChessLogic.Presentation;
 
 public enum ViewInputKind {
     Move,

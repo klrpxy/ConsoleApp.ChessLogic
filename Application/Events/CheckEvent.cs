@@ -1,5 +1,5 @@
-using ConsoleAppChessLogic.Domain.Pieces;
+using ConsoleApp.ChessLogic.Domain.Pieces;
 
-namespace ConsoleAppChessLogic.Application.Events;
+namespace ConsoleApp.ChessLogic.Application.Events;
 
 public sealed record CheckEvent(PieceColor CheckedColor) : IGameEvent;
