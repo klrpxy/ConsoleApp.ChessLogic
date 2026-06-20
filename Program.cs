@@ -1,6 +1,6 @@
 using ConsoleAppChessLogic.Application;
 using ConsoleAppChessLogic.Presentation;
-using ConsoleAppChessLogic.Presentation.Console.Board;
+using ConsoleAppChessLogic.Presentation.Console.BoardView;
 
 var engine = new GameEngine();
 

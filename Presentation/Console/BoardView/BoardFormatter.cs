@@ -4,7 +4,7 @@ using ConsoleAppChessLogic.Domain.Board;
 using ConsoleAppChessLogic.Domain.Game;
 using ConsoleAppChessLogic.Domain.Pieces;
 
-namespace ConsoleAppChessLogic.Presentation.Console.Board;
+namespace ConsoleAppChessLogic.Presentation.Console.BoardView;
 
 public static class BoardFormatter {
     public static string Format(
@@ -57,7 +57,7 @@ public static class BoardFormatter {
         }
 
         builder.AppendLine();
-        AppendStatus(builder, snapshot, theme);
+        AppendStatus(builder, snapshot);
         builder.AppendLine();
 
         if (snapshot.Status == GameStatus.Playing) {
@@ -89,38 +89,24 @@ public static class BoardFormatter {
 
     private static void AppendStatus(
         StringBuilder builder,
-        GameSnapshot snapshot,
-        BoardConsoleTheme theme) {
+        GameSnapshot snapshot) {
         switch (snapshot.Status) {
             case GameStatus.Playing:
-                builder.Append("当前回合：");
-                AppendSide(builder, snapshot.CurrentTurn, theme);
-                builder.Append('方');
+                builder.Append(
+                    snapshot.CurrentTurn == PieceColor.Red
+                        ? "当前回合：红方"
+                        : "当前回合：黑方");
                 break;
             case GameStatus.RedWon:
-                builder.Append("游戏结束：");
-                AppendSide(builder, PieceColor.Red, theme);
-                builder.Append("方胜利");
+                builder.Append("游戏结束：红方胜利");
                 break;
             case GameStatus.BlackWon:
-                builder.Append("游戏结束：");
-                AppendSide(builder, PieceColor.Black, theme);
-                builder.Append("方胜利");
+                builder.Append("游戏结束：黑方胜利");
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(snapshot));
         }
     }
-
-    private static void AppendSide(
-        StringBuilder builder,
-        PieceColor color,
-        BoardConsoleTheme theme) =>
-        AppendStyled(
-            builder,
-            color == PieceColor.Red ? "红" : "黑",
-            color == PieceColor.Red ? theme.RedPieces : theme.BlackPieces,
-            theme);
 
     private static void AppendStyled(
         StringBuilder builder,

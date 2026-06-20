@@ -1,4 +1,4 @@
-namespace ConsoleAppChessLogic.Tests.Presentation.Console;
+namespace ConsoleAppChessLogic.Tests.Presentation.Console.BoardView;
 
 public sealed class BoardFormatterTests {
     [Fact]
@@ -44,6 +44,10 @@ public sealed class BoardFormatterTests {
         Assert.Contains("\u001b[38;2;13;14;15m楚河　汉界", text);
         Assert.Contains("\u001b[38;2;16;17;18m帅", text);
         Assert.Contains("\u001b[38;2;19;20;21m将", text);
+        Assert.Contains("当前回合：红方", text);
+        Assert.DoesNotContain(
+            "当前回合：\u001b[38;2;16;17;18m红",
+            text);
         Assert.EndsWith("\u001b[0m", text);
     }
 

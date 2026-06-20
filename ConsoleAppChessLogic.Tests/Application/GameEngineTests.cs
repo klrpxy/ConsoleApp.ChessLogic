@@ -26,7 +26,7 @@ public sealed class GameEngineTests {
             new BoardPosition(1, 9),
             new BoardPosition(2, 7)));
 
-        Assert.Equal(MoveResult.Success, result.Result);
+        Assert.True(result.Success);
         Assert.Equal(PieceColor.Black, engine.State.CurrentTurn);
 
         var moved = Assert.IsType<PieceMovedEvent>(Assert.Single(result.Events));
@@ -44,7 +44,7 @@ public sealed class GameEngineTests {
             new BoardPosition(1, 9),
             new BoardPosition(3, 7)));
 
-        Assert.Equal(MoveResult.InvalidInput, result.Result);
+        Assert.False(result.Success);
         Assert.Empty(result.Events);
         Assert.Equal(PieceColor.Red, engine.State.CurrentTurn);
         Assert.Equal(
@@ -84,7 +84,7 @@ public sealed class GameEngineTests {
             new BoardPosition(0, 1),
             new BoardPosition(4, 1)));
 
-        Assert.Equal(MoveResult.Check, result.Result);
+        Assert.True(result.Success);
         Assert.Collection(
             result.Events,
             gameEvent => Assert.IsType<PieceMovedEvent>(gameEvent),
@@ -106,7 +106,7 @@ public sealed class GameEngineTests {
             new BoardPosition(4, 1),
             new BoardPosition(4, 0)));
 
-        Assert.Equal(MoveResult.RedWins, result.Result);
+        Assert.True(result.Success);
         Assert.Equal(GameStatus.RedWon, engine.State.Status);
         Assert.Collection(
             result.Events,
@@ -117,8 +117,8 @@ public sealed class GameEngineTests {
                 Assert.Equal(PieceColor.Black, captured.Color);
             },
             gameEvent => {
-                var lost = Assert.IsType<GameLostEvent>(gameEvent);
-                Assert.Equal(PieceColor.Black, lost.LosingColor);
+                var ended = Assert.IsType<GameEndedEvent>(gameEvent);
+                Assert.Equal(PieceColor.Red, ended.Winner);
             });
     }
 
@@ -134,7 +134,7 @@ public sealed class GameEngineTests {
             new BoardPosition(1, 9),
             new BoardPosition(2, 7)));
 
-        Assert.Equal(MoveResult.GameAlreadyEnded, result.Result);
+        Assert.False(result.Success);
         Assert.Empty(result.Events);
     }
 }

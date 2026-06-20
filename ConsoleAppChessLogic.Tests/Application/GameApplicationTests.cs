@@ -15,7 +15,7 @@ public sealed class GameApplicationTests {
 
         Assert.NotNull(view.InitialSnapshot);
         var shown = Assert.Single(view.Results);
-        Assert.Equal(MoveResult.Success, shown.Result.Result);
+        Assert.True(shown.Result.Success);
         Assert.Equal(PieceColor.Black, shown.Snapshot.CurrentTurn);
     }
 

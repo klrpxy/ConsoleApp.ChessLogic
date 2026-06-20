@@ -1,4 +1,4 @@
-namespace ConsoleAppChessLogic.Tests.Presentation.Console;
+namespace ConsoleAppChessLogic.Tests.Presentation.Console.BoardView;
 
 public sealed class BoardConsoleViewTests {
     [Fact]
@@ -17,7 +17,7 @@ public sealed class BoardConsoleViewTests {
         using var output = new StringWriter();
         var view = CreateView(output);
         var result = new GameResult(
-            MoveResult.Success,
+            true,
             new IGameEvent[] {
                 new PieceMovedEvent(
                     PieceColor.Red,
@@ -44,7 +44,7 @@ public sealed class BoardConsoleViewTests {
         var view = CreateView(output);
 
         view.ShowResult(
-            GameResult.WithoutEvents(MoveResult.InvalidInput),
+            GameResult.Failed(),
             new GameEngine().GetSnapshot());
 
         Assert.Equal($"输入非法{Environment.NewLine}", output.ToString());

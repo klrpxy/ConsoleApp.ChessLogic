@@ -2,4 +2,4 @@ using ConsoleAppChessLogic.Domain.Pieces;
 
 namespace ConsoleAppChessLogic.Application.Events;
 
-public sealed record GameLostEvent(PieceColor LosingColor) : IGameEvent;
+public sealed record GameEndedEvent(PieceColor Winner) : IGameEvent;

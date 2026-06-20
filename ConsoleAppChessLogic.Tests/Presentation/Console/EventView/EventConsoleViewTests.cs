@@ -1,6 +1,24 @@
-namespace ConsoleAppChessLogic.Tests.Presentation.Console;
+namespace ConsoleAppChessLogic.Tests.Presentation.Console.EventView;
 
 public sealed class EventConsoleViewTests {
+    [Fact]
+    public void ShowResult_PrintsWinnerForGameEndedEvent() {
+        using var output = new StringWriter();
+        var view = new EventConsoleView(
+            new StringReader(string.Empty),
+            output,
+            new ConsoleMoveInputParser());
+        var result = new GameResult(
+            true,
+            new IGameEvent[] {
+                new GameEndedEvent(PieceColor.Red)
+            });
+
+        view.ShowResult(result, EmptySnapshot());
+
+        Assert.Equal($"红方胜利{Environment.NewLine}", output.ToString());
+    }
+
     [Fact]
     public void ShowResult_PrintsEventsInOrder() {
         using var output = new StringWriter();
@@ -9,7 +27,7 @@ public sealed class EventConsoleViewTests {
             output,
             new ConsoleMoveInputParser());
         var result = new GameResult(
-            MoveResult.Success,
+            true,
             new IGameEvent[] {
                 new PieceMovedEvent(
                     PieceColor.Red,
@@ -38,7 +56,7 @@ public sealed class EventConsoleViewTests {
             new ConsoleMoveInputParser());
 
         view.ShowResult(
-            GameResult.WithoutEvents(MoveResult.InvalidInput),
+            GameResult.Failed(),
             EmptySnapshot());
 
         Assert.Equal($"输入非法{Environment.NewLine}", output.ToString());

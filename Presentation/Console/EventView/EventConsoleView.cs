@@ -2,23 +2,20 @@ using ConsoleAppChessLogic.Application.Results;
 using ConsoleAppChessLogic.Application.Snapshots;
 using ConsoleAppChessLogic.Presentation.Console.Common;
 
-namespace ConsoleAppChessLogic.Presentation.Console.Board;
+namespace ConsoleAppChessLogic.Presentation.Console.EventView;
 
-public sealed class BoardConsoleView : IGameView {
+public sealed class EventConsoleView : IGameView {
     private readonly TextReader input;
     private readonly TextWriter output;
-    private readonly BoardConsoleInputParser inputParser;
-    private readonly BoardConsoleTheme theme;
+    private readonly ConsoleMoveInputParser inputParser;
 
-    public BoardConsoleView(
+    public EventConsoleView(
         TextReader input,
         TextWriter output,
-        BoardConsoleInputParser inputParser,
-        BoardConsoleTheme theme) {
+        ConsoleMoveInputParser inputParser) {
         this.input = input;
         this.output = output;
         this.inputParser = inputParser;
-        this.theme = theme;
     }
 
     public async ValueTask<ViewInputResult> ReadInputAsync(
@@ -28,7 +25,6 @@ public sealed class BoardConsoleView : IGameView {
     }
 
     public void ShowInitial(GameSnapshot snapshot) {
-        output.WriteLine(BoardFormatter.Format(snapshot, theme));
     }
 
     public void ShowInvalidInput() {
@@ -36,21 +32,13 @@ public sealed class BoardConsoleView : IGameView {
     }
 
     public void ShowResult(GameResult result, GameSnapshot snapshot) {
-        if (result.Result == MoveResult.InvalidInput) {
+        if (!result.Success) {
             output.WriteLine("输入非法");
             return;
         }
 
-        if (result.Result == MoveResult.GameAlreadyEnded) {
-            output.WriteLine("游戏已经结束");
-            return;
-        }
-
         foreach (var gameEvent in result.Events) {
-            output.WriteLine(GameEventFormatter.Format(gameEvent, columnOffset: 1));
+            output.WriteLine(GameEventFormatter.Format(gameEvent));
         }
-
-        output.WriteLine();
-        output.WriteLine(BoardFormatter.Format(snapshot, theme));
     }
 }

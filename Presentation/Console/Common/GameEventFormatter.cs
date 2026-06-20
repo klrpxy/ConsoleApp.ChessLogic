@@ -16,8 +16,8 @@ public static class GameEventFormatter {
                 $"{FormatColor(e.Color)}方{FormatPiece(e.PieceType)}被吃",
             CheckEvent e =>
                 $"{FormatColor(e.CheckedColor)}方被将军",
-            GameLostEvent e =>
-                $"{FormatColor(e.LosingColor)}方输了",
+            GameEndedEvent e =>
+                $"{FormatColor(e.Winner)}方胜利",
             _ => throw new ArgumentOutOfRangeException(nameof(gameEvent))
         };
 

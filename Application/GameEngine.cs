@@ -37,7 +37,7 @@ public sealed class GameEngine {
 
     public GameResult Execute(MoveChessIntent intent) {
         if (State.Status != GameStatus.Playing) {
-            return GameResult.WithoutEvents(MoveResult.GameAlreadyEnded);
+            return GameResult.Failed();
         }
 
         if (!moveValidator.IsLegalMove(
@@ -45,7 +45,7 @@ public sealed class GameEngine {
                 intent.From,
                 intent.To,
                 State.CurrentTurn)) {
-            return GameResult.WithoutEvents(MoveResult.InvalidInput);
+            return GameResult.Failed();
         }
 
         var movingPiece = State.Board[intent.From]!.Value;
@@ -73,22 +73,18 @@ public sealed class GameEngine {
                 ? GameStatus.RedWon
                 : GameStatus.BlackWon;
 
-            events.Add(new GameLostEvent(opponent));
+            events.Add(new GameEndedEvent(movingColor));
 
-            return new GameResult(
-                movingColor == PieceColor.Red
-                    ? MoveResult.RedWins
-                    : MoveResult.BlackWins,
-                events);
+            return new GameResult(true, events);
         }
 
         State.CurrentTurn = opponent;
 
         if (moveValidator.IsInCheck(State.Board, opponent)) {
             events.Add(new CheckEvent(opponent));
-            return new GameResult(MoveResult.Check, events);
+            return new GameResult(true, events);
         }
 
-        return new GameResult(MoveResult.Success, events);
+        return new GameResult(true, events);
     }
 }

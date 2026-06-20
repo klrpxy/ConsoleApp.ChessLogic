@@ -1,4 +1,4 @@
-namespace ConsoleAppChessLogic.Tests.Presentation.Console;
+namespace ConsoleAppChessLogic.Tests.Presentation.Console.BoardView;
 
 public sealed class BoardConsoleInputParserTests {
     private readonly BoardConsoleInputParser parser = new();
