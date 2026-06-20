@@ -2,6 +2,23 @@ namespace ConsoleAppChessLogic.Tests;
 
 public sealed class GameEngineTests {
     [Fact]
+    public void GetSnapshot_ReturnsCurrentReadOnlyState() {
+        var engine = new GameEngine();
+
+        var snapshot = engine.GetSnapshot();
+
+        Assert.Equal(PieceColor.Red, snapshot.CurrentTurn);
+        Assert.Equal(GameStatus.Playing, snapshot.Status);
+        Assert.Equal(32, snapshot.Pieces.Count);
+        Assert.Contains(
+            snapshot.Pieces,
+            piece =>
+                piece.Color == PieceColor.Red &&
+                piece.Type == PieceType.General &&
+                piece.Position == new BoardPosition(4, 9));
+    }
+
+    [Fact]
     public async Task Route_HandlesPublishedMoveIntent() {
         var engine = new GameEngine();
         var router = new VitalRouter.Router();

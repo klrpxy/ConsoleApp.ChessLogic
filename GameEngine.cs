@@ -13,6 +13,21 @@ public sealed partial class GameEngine {
 
     public GameState State { get; }
 
+    public GameSnapshot GetSnapshot() {
+        var pieces = State.Board
+            .GetAllPieces()
+            .Select(x => new PieceSnapshot(
+                x.Piece.Color,
+                x.Piece.Type,
+                x.Position))
+            .ToArray();
+
+        return new GameSnapshot(
+            State.CurrentTurn,
+            State.Status,
+            pieces);
+    }
+
     [Route]
     private void Handle(MoveChessIntent intent) {
         intent.Complete(Execute(intent.Command));

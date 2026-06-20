@@ -71,6 +71,14 @@ public sealed class ChessBoard {
         }
     }
 
+    public IEnumerable<(BoardPosition Position, ChessPiece Piece)> GetAllPieces() {
+        foreach (var color in Enum.GetValues<PieceColor>()) {
+            foreach (var piece in GetPieces(color)) {
+                yield return piece;
+            }
+        }
+    }
+
     public int CountPiecesBetween(BoardPosition from, BoardPosition to) {
         var stepX = Math.Sign(to.X - from.X);
         var stepY = Math.Sign(to.Y - from.Y);
